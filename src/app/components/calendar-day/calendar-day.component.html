@@ -1,0 +1,8 @@
+<div (click)="setClickedDay(day.date.getUTCDate())">
+  <p>{{ dayNames[day.date.getDay()] }}</p>
+  <p [ngClass]="returnDayClass(day.date.getUTCDate())">
+    {{ day.date.getDate() }}
+  </p>
+  <p>{{ day.quantity }}</p>
+  <span [ngClass]="setDotClass()"></span>
+</div>

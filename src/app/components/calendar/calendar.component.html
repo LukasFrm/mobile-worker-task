@@ -1,0 +1,9 @@
+<section>
+  <h3>March 2020</h3>
+  <app-calendar-day
+    *ngFor="let day of days"
+    [day]="day"
+    [selectedDay]="selectedDay"
+    (clickedDay)="handleValueChange($event)"
+  ></app-calendar-day>
+</section>
