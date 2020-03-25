@@ -1,26 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core'
-import { CalendarDay } from 'src/app/models/CalendarDay'
+import { Injectable } from '@angular/core'
+import { CalendarDay } from '../models/CalendarDay'
 
-@Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss'],
+@Injectable({
+  providedIn: 'root',
 })
-export class CalendarComponent implements OnInit {
-  days: Array<CalendarDay>
-  selectedDay: number
+export class GenerateDayDataService {
   constructor() {}
 
-  ngOnInit(): void {
-    this.generateWeekData()
-    this.days = this.generateWeekData().reverse()
-  }
-
-  handleValueChange(date) {
-    this.selectedDay = date
-  }
-
-  generateWeekData(): Array<CalendarDay> {
+  getWeek(): Array<CalendarDay> {
     let arr = []
     let date = new Date()
     let thisYear = date.getFullYear()
@@ -31,7 +18,7 @@ export class CalendarComponent implements OnInit {
       let whenEven = i % 2 === 0
       arr[i] = {
         date: new Date(thisYear, thisMonth, thisDayNo - i),
-        // Work amount in 30min chunks --> 12 work hours * 0,5 hr chunks = 24
+        // Work amount in 30min chunks -->  12 work hours * 0,5 hr chunks = 24
         quantity: Math.floor(Math.random() * (24 + 1)),
         price: 13,
         eventType: 'string',

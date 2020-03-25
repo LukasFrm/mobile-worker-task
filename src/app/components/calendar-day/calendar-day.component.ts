@@ -15,8 +15,10 @@ export class CalendarDayComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.warn(this.clickedDay)
+  ngOnInit(): void {}
+
+  mathFloor(x: number): number {
+    return Math.floor(x)
   }
 
   setDotClass(): object {

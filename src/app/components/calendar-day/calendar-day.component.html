@@ -3,6 +3,16 @@
   <p [ngClass]="returnDayClass(day.date.getUTCDate())">
     {{ day.date.getDate() }}
   </p>
-  <p>{{ day.quantity }}</p>
-  <span [ngClass]="setDotClass()"></span>
+  <div *ngIf="day.quantity; then thenBlock; else elseBlock"></div>
+  <ng-template #thenBlock>
+    <p>
+      <span class="workHours">
+        {{ mathFloor(day.quantity * 0.5) }}:{{
+          (day.quantity % 2) * 30 || '00'
+        }}
+      </span>
+    </p>
+  </ng-template>
+  <ng-template #elseBlock><p>-</p></ng-template>
+  <spa [ngClass]="setDotClass()"></spa>
 </div>

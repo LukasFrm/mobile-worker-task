@@ -14,7 +14,7 @@
 }
 
 .greyDot {
-  background-color: rgb(0,0,0,0.6);
+  background-color: rgb(0, 0, 0, 0.6);
 }
 
 .noDot {
@@ -33,6 +33,10 @@ div {
   border-radius: 5px;
   color: white;
 }
+ .workHours ::ng-deep {
+  font-size: 12px !important;
+  color: rgb(0, 0, 0, 0.6);
+}
 
 .today {
   border: 1px solid #f08900;
@@ -40,6 +44,7 @@ div {
 }
 
 p {
-    padding: 3px;
-    font-size: 16px;
+  padding: 3px;
+  font-size: 14px;
 }
+
