@@ -1,0 +1,20 @@
+div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+p {
+    color: white;
+}
+
+.goBack:hover{
+    color: #f08900;
+    cursor: pointer;
+}
+
+p, .material-icons {
+    font-size: 24px !important;
+
+}

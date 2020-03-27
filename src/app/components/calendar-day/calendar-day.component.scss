@@ -18,7 +18,7 @@
 }
 
 .noDot {
-  display: none;
+  color: none;
 }
 
 div {
@@ -33,18 +33,21 @@ div {
   border-radius: 5px;
   color: white;
 }
- .workHours ::ng-deep {
+ .workHours {
   font-size: 12px !important;
   color: rgb(0, 0, 0, 0.6);
 }
 
 .today {
   border: 1px solid #f08900;
-  border-radius: 5px;
 }
 
 p {
   padding: 3px;
   font-size: 14px;
+}
+
+.daySelection {
+  min-width: 37px;
 }
 

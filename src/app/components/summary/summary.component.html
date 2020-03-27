@@ -1,62 +1,83 @@
-<section class="summaryBlock">
-  <h3><span class="material-icons">
-    query_builder
-    </span> Hours</h3>
-  <div>
-    <p>Type</p>
-    <p>Arbeitsid</p>
-    <p>Overtid 50%</p>
-  </div>
+<div class="summaryHeader">
+  <h4>
+    {{ selectedDayString() }}
+    <span class="float-right text-orange pointer"
+      ><b (click)="calendarService.toggleTimeSheet(true)">GO TO TIMESHEET</b></span
+    >
+  </h4>
+</div>
+<div
+  class="scrollableArea"
+  *ngIf="calendarService.clickedDateObj.isHoursEventType && calendarService.timeSheetisOpen"
+>
+  <section *ngIf="calendarService.clickedDateObj.isHoursEventType">
+    <p class="summaryHead">
+      <span class="material-icons">
+        query_builder
+      </span>
+      Hours <span class="float-right grey">({{ hoursHeader() }})</span>
+    </p>
+    <table>
+      <tbody>
+        <tr>
+          <td>Type</td>
+          <td>Duration</td>
+        </tr>
+        <tr>
+          <td>Total work hrs</td>
+          <td>{{ calendarService.getWorkedHours() }}</td>
+        </tr>
+        <tr>
+          <td>Overtime</td>
+          <td>{{ calendarService.getOvertime() }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-  <div class="float-right">
-    <p>Duration</p>
-    <p>7:30</p>
-    <p>1:00</p>
-  </div>
-</section>
+  <section *ngIf="calendarService.clickedDateObj.isExpenseType">
+    <p class="summaryHead">
+      <span class="material-icons">
+        attach_money
+      </span>
+      <span>Expenses</span>
+    </p>
+    <table>
+      <tbody>
+        <tr>
+          <td>Type</td>
+          <td>Quantity</td>
+          <td>Total</td>
+        </tr>
+        <tr>
+          <td>Expense @ {{ calendarService.clickedDateObj.price }}kr</td>
+          <td>{{ calendarService.clickedDateObj.quantity }}</td>
+          <td>
+            {{
+              calendarService.clickedDateObj.quantity *
+                calendarService.clickedDateObj.price
+            }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-<section class="summaryBlock">
-  <h3><span class="material-icons">
-    attach_money
-    </span> Expenses</h3>
-  <div>
-    <p>Type</p>
-    <p>Liftleie dagpris</p>
-  </div>
-
-  <div>
-    <p>Quantity</p>
-    <p>2</p>
-  </div>
-  <div class="float-right">
-    <p>Total</p>
-    <p>567</p>
-  </div>
-</section>
-
-<section class="summaryBlock">
-  <h3> <span class="material-icons">
-    update
-    </span>Additional hours</h3>
-  <div>
-    <p>Type</p>
-    <p>Liftleie dagpris</p>
-  </div>
-  <div class="float-right">
-    <p>Amount</p>
-    <p>2.5</p>
-  </div>
-</section>
-<section class="summaryBlock">
-  <h3><span class="material-icons">
-    assessment
-    </span> Last section</h3>
-  <div>
-    <p>Type</p>
-    <p>Liftleie dagpris</p>
-  </div>
-  <div class="float-right">
-    <p>Amount</p>
-    <p>2.5</p>
-  </div>
-</section>
+  <section *ngIf="calendarService.clickedDateObj.isAdditionalHoursEventType">
+    <p class="summaryHead">
+      <span class="material-icons"> update </span>Additional info
+    </p>
+    <table>
+      <tbody>
+        <tr>
+          <td>Type</td>
+          <td>Amount</td>
+        </tr>
+        <tr>
+          <td>Task count</td>
+          <td>{{ calendarService.clickedDateObj.tasksCount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

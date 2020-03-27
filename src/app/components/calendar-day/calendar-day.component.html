@@ -1,18 +1,16 @@
-<div (click)="setClickedDay(day.date.getUTCDate())">
+<div (click)="calendarService.setClickedDayGlobal(day)" class="daySelection">
   <p>{{ dayNames[day.date.getDay()] }}</p>
-  <p [ngClass]="returnDayClass(day.date.getUTCDate())">
+  <p [ngClass]="setDayClass(day.date.getUTCDate())">
     {{ day.date.getDate() }}
   </p>
-  <div *ngIf="day.quantity; then thenBlock; else elseBlock"></div>
+  <div *ngIf="day.tasksCount; then thenBlock; else elseBlock"></div>
   <ng-template #thenBlock>
     <p>
       <span class="workHours">
-        {{ mathFloor(day.quantity * 0.5) }}:{{
-          (day.quantity % 2) * 30 || '00'
-        }}
+        {{ calcWorkTime(day.firstTaskStart, day.lastTaskEnd) }}
       </span>
     </p>
   </ng-template>
-  <ng-template #elseBlock><p>-</p></ng-template>
-  <spa [ngClass]="setDotClass()"></spa>
+  <ng-template #elseBlock><p>-</p> </ng-template>
+  <span [ngClass]="setDotClass()"></span>
 </div>
